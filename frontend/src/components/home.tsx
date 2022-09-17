@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { RegisterPage } from './noAuth/register'
+import { RegisterPage } from './noAuth/Register'
 
 const Title = styled.h1`
   text-align: center;
