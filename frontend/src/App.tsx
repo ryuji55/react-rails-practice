@@ -2,8 +2,8 @@ import React from 'react'
 import './App.css'
 import styled from 'styled-components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Home } from './components/Home'
-import { Dashboard } from './components/Dashboard'
+import { Home } from './components/home'
+import { Dashboard } from './components/dashboard'
 
 const Title = styled.h1`
   text-align: center;
