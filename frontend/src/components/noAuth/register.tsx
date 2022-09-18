@@ -1,6 +1,6 @@
-import axios from 'axios'
 import React from 'react'
 import styled from 'styled-components'
+import { axiosRegisterPost } from '../../methods/api'
 
 type Props = {
   email: string
@@ -70,24 +70,7 @@ const Container = React.memo(function Container() {
   const [passwordConfirmation, setPasswordConfirmation] = React.useState('')
   const handleSubmit = React.useCallback(
     (e: any) => {
-      axios
-        .post(
-          'http://localhost:3001/signup',
-          {
-            user: {
-              email: email,
-              password: password,
-              password_confirmation: passwordConfirmation,
-            },
-          },
-          { withCredentials: true },
-        )
-        .then((response) => {
-          console.log('registration res', response)
-        })
-        .catch((error) => {
-          console.log('registration error', error)
-        })
+      axiosRegisterPost({ email, password, passwordConfirmation })
       e.preventDefault()
     },
     [email, password, passwordConfirmation],
