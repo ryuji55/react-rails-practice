@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { axiosRegisterPost } from '../../methods/api'
+import { createUser } from '../../methods/apis/createUser'
+import { useState, useCallback } from 'react'
 
 type Props = {
   email: string
@@ -65,12 +66,12 @@ const Component = React.memo(function Component(props: Props) {
 })
 
 const Container = React.memo(function Container() {
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [passwordConfirmation, setPasswordConfirmation] = React.useState('')
-  const handleSubmit = React.useCallback(
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const handleSubmit = useCallback(
     (e: any) => {
-      axiosRegisterPost({ email, password, passwordConfirmation })
+      createUser({ email, password, passwordConfirmation })
       e.preventDefault()
     },
     [email, password, passwordConfirmation],

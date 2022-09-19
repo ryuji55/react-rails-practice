@@ -1,5 +1,5 @@
-import { axiosRegisterPostUrl } from './../constants/url'
 import axios from 'axios'
+import { createUserUrl } from '../../constants/url'
 
 type Props = {
   email: string
@@ -7,14 +7,14 @@ type Props = {
   passwordConfirmation: string
 }
 
-export const axiosRegisterPost = ({
+export const createUser = ({
   email,
   password,
   passwordConfirmation,
 }: Props): void => {
   axios
     .post(
-      axiosRegisterPostUrl,
+      createUserUrl,
       {
         user: {
           email: email,
@@ -28,6 +28,6 @@ export const axiosRegisterPost = ({
       console.log('registration res', response)
     })
     .catch((error) => {
-      console.log('registration error', error)
+      console.error('registration error', error)
     })
 }
