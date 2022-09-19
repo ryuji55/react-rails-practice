@@ -1,1 +1,1 @@
-export const axiosRegisterPostUrl = 'http://localhost:3001/signup'
+export const createUserUrl = 'http://localhost:3001/signup'
