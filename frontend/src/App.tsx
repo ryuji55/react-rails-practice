@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import './App.css'
 import styled from 'styled-components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -10,16 +10,20 @@ const Title = styled.h1`
   font-size: 34px;
 `
 
+export const LoggedInStatus = createContext('')
+
 const App = React.memo(function App() {
   return (
     <>
       <Title>ReactPractice</Title>
-      <BrowserRouter>
-        <Routes>
-          <Route path={'/'} element={<Home />} />
-          <Route path={'/dashboard'} element={<Dashboard />} />
-        </Routes>
-      </BrowserRouter>
+      <LoggedInStatus.Provider value={'未ログイン'}>
+        <BrowserRouter>
+          <Routes>
+            <Route path={'/'} element={<Home />} />
+            <Route path={'/dashboard'} element={<Dashboard />} />
+          </Routes>
+        </BrowserRouter>
+      </LoggedInStatus.Provider>
     </>
   )
 })
