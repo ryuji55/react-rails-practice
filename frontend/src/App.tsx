@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Home } from './components/home'
 import { Dashboard } from './components/dashboard'
+import { LoggedInStatusProvider } from './components/loggedInStatusProvider'
 
 const Title = styled.h1`
   text-align: center;
@@ -16,14 +17,14 @@ const App = React.memo(function App() {
   return (
     <>
       <Title>ReactPractice</Title>
-      <LoggedInStatus.Provider value={'未ログイン'}>
+      <LoggedInStatusProvider>
         <BrowserRouter>
           <Routes>
             <Route path={'/'} element={<Home />} />
             <Route path={'/dashboard'} element={<Dashboard />} />
           </Routes>
         </BrowserRouter>
-      </LoggedInStatus.Provider>
+      </LoggedInStatusProvider>
     </>
   )
 })
