@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { LoggedInStatus } from '../App'
+import { LoggedInStatus } from './loggedInStatusProvider'
 import { RegisterPage } from './noAuth/register'
 
 // type ContainerProps = {}
