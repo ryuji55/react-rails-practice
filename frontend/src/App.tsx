@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css'
 import styled from 'styled-components'
-import { LoggedInStatusProvider } from './components/loggedInStatusProvider'
-import { Router } from './router'
+import { LoggedInStatusProvider } from './components/LoggedInStatusProvider'
+import { Router } from './Router'
 
 const Title = styled.h1`
   text-align: center;
