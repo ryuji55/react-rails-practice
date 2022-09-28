@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { memo, useContext } from 'react'
 import styled from 'styled-components'
 import { LoggedInStatus } from './LoggedInStatusProvider'
 import { RegisterPage } from './noAuth/Register'
@@ -19,7 +19,7 @@ const LoginStatus = styled.h2`
   font-size: 28px;
 `
 
-const Component = React.memo(function Component(props: Props) {
+const Component = memo(function Component(props: Props) {
   return (
     <>
       <Title>Home</Title>
@@ -29,7 +29,7 @@ const Component = React.memo(function Component(props: Props) {
   )
 })
 
-const Container = React.memo(function Container() {
+const Container = memo(function Container() {
   const loggedInStatus = useContext(LoggedInStatus)
   return <Component {...{ loggedInStatus }} />
 })

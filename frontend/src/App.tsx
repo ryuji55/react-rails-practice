@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import './App.css'
 import styled from 'styled-components'
 import { LoggedInStatusProvider } from './components/LoggedInStatusProvider'
@@ -9,7 +9,7 @@ const Title = styled.h1`
   font-size: 34px;
 `
 
-const App = React.memo(function App() {
+const App = memo(function App() {
   return (
     <>
       <Title>ReactPractice</Title>

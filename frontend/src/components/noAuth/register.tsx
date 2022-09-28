@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import styled from 'styled-components'
 import { createUser } from '../../methods/apis/createUser'
 import { useState, useCallback } from 'react'
@@ -25,7 +25,7 @@ const InputContainer = styled.div`
   margin-bottom: 20px;
 `
 
-const Component = React.memo(function Component(props: Props) {
+const Component = memo(function Component(props: Props) {
   return (
     <>
       <FormContainer>
@@ -65,7 +65,7 @@ const Component = React.memo(function Component(props: Props) {
   )
 })
 
-const Container = React.memo(function Container() {
+const Container = memo(function Container() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
