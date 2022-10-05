@@ -1,4 +1,5 @@
-import { memo, useContext } from 'react'
+import { memo, useCallback, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { LoggedInStatus } from './LoggedInStatusProvider'
 import { RegisterPage } from './noAuth/Register'
@@ -7,6 +8,7 @@ import { RegisterPage } from './noAuth/Register'
 
 type Props = {
   loggedInStatus: string
+  handleSuccessfulAuthentication: () => void
 }
 
 const Title = styled.h1`
@@ -24,14 +26,20 @@ const Component = memo(function Component(props: Props) {
     <>
       <Title>Home</Title>
       <LoginStatus>ログイン状態: {props.loggedInStatus}</LoginStatus>
-      <RegisterPage />
+      <RegisterPage
+        handleSuccessfulAuthentication={props.handleSuccessfulAuthentication}
+      />
     </>
   )
 })
 
 const Container = memo(function Container() {
+  const navigation = useNavigate()
+  const handleSuccessfulAuthentication = useCallback(() => {
+    navigation('/dashboard')
+  }, [navigation])
   const loggedInStatus = useContext(LoggedInStatus)
-  return <Component {...{ loggedInStatus }} />
+  return <Component {...{ loggedInStatus, handleSuccessfulAuthentication }} />
 })
 
 export { Container as Home }

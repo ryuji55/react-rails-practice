@@ -1,16 +1,19 @@
 import axios from 'axios'
+import { isPropertySignature } from 'typescript'
 import { createUserUrl } from '../../constants/url'
 
 type Props = {
   email: string
   password: string
   passwordConfirmation: string
+  handleSuccessfulAuthentication: any
 }
 
 export const createUser = ({
   email,
   password,
   passwordConfirmation,
+  handleSuccessfulAuthentication,
 }: Props): void => {
   axios
     .post(
@@ -25,6 +28,9 @@ export const createUser = ({
       { withCredentials: true },
     )
     .then((response) => {
+      if (response.data.status === 'created') {
+        handleSuccessfulAuthentication(response.data)
+      }
       console.log('registration res', response)
     })
     .catch((error) => {
