@@ -13,7 +13,7 @@ const LoginStatus = styled.h2`
 `
 
 const Dashboard = memo(function Home() {
-  const loggedInStatus = useContext(LoggedInStatus)
+  const { loggedInStatus } = useContext(LoggedInStatus)
   return (
     <>
       <Title>Dashboard</Title>

@@ -2,6 +2,7 @@ import { memo } from 'react'
 import styled from 'styled-components'
 import { createUser } from '../../methods/apis/createUser'
 import { useState, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   email: string
@@ -65,16 +66,30 @@ const Component = memo(function Component(props: Props) {
   )
 })
 
-const Container = memo(function Container() {
+const Container = memo(function Container({ handleLogin }: any) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const navigation = useNavigate()
+  const handleSuccessfulAuthentication = useCallback(
+    (data: any) => {
+      handleLogin(data)
+      navigation('/dashboard')
+    },
+    [navigation],
+  )
+
   const handleSubmit = useCallback(
     (e: any) => {
-      createUser({ email, password, passwordConfirmation })
+      createUser({
+        email,
+        password,
+        passwordConfirmation,
+        handleSuccessfulAuthentication,
+      })
       e.preventDefault()
     },
-    [email, password, passwordConfirmation],
+    [email, password, passwordConfirmation, handleSuccessfulAuthentication],
   )
 
   return (

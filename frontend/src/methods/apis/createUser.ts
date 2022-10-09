@@ -1,12 +1,11 @@
 import axios from 'axios'
-import { isPropertySignature } from 'typescript'
 import { createUserUrl } from '../../constants/url'
 
 type Props = {
   email: string
   password: string
   passwordConfirmation: string
-  handleSuccessfulAuthentication: any
+  handleSuccessfulAuthentication: (data: any) => void
 }
 
 export const createUser = ({
