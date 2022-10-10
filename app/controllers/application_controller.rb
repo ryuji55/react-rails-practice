@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
   # helper_method :login, :current_user
   
-  def login
+  def login!
     session[:user_id] = @user.id
   end
     
