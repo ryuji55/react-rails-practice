@@ -76,7 +76,7 @@ const Container = memo(function Container({ handleLogin }: any) {
       handleLogin(data)
       navigation('/dashboard')
     },
-    [navigation],
+    [navigation, handleLogin],
   )
 
   const handleSubmit = useCallback(
